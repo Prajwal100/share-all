@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   InkWell(
                     onTap: () {Navigator.push(context,MaterialPageRoute(builder: (context) => SignupPage(),))},
-                    child: Text("Register"),
+                    child: Text("Login"),
                   ),
                 ],
               ),
