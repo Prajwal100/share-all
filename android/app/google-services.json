@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "672138738417",
+    "firebase_url": "https://shareall-f2c29.firebaseio.com",
+    "project_id": "shareall-f2c29",
+    "storage_bucket": "shareall-f2c29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672138738417:android:1a7487d62f5b5f9c25c750",
+        "android_client_info": {
+          "package_name": "com.example.shareall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672138738417-26mga32ogf8hao5h0v7fr9t2so4aqcqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK3Q7fEE2dLlFwQDjXF5WFK5ytwSVHhRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672138738417-26mga32ogf8hao5h0v7fr9t2so4aqcqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
