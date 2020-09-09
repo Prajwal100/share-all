@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "672138738417",
-    "firebase_url": "https://shareall-f2c29.firebaseio.com",
-    "project_id": "shareall-f2c29",
-    "storage_bucket": "shareall-f2c29.appspot.com"
+    "project_number": "547945474310",
+    "firebase_url": "https://shareall-8b2ce.firebaseio.com",
+    "project_id": "shareall-8b2ce",
+    "storage_bucket": "shareall-8b2ce.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:672138738417:android:1a7487d62f5b5f9c25c750",
+        "mobilesdk_app_id": "1:547945474310:android:66c82ee1c4310108e15687",
         "android_client_info": {
           "package_name": "com.example.shareall"
         }
       },
       "oauth_client": [
         {
-          "client_id": "672138738417-26mga32ogf8hao5h0v7fr9t2so4aqcqu.apps.googleusercontent.com",
+          "client_id": "547945474310-28k6nthjs3g1lklc78ngoov2k33auffb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAK3Q7fEE2dLlFwQDjXF5WFK5ytwSVHhRs"
+          "current_key": "AIzaSyC3iqgfVNUFrdBuD3W-Ku6yuh3prLaUkIA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "672138738417-26mga32ogf8hao5h0v7fr9t2so4aqcqu.apps.googleusercontent.com",
+              "client_id": "547945474310-28k6nthjs3g1lklc78ngoov2k33auffb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

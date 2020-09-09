@@ -18,23 +18,35 @@ class _MainPageState extends State<MainPage> {
     SearchPage(),
     ProfilePage(),
   ];
+  signout() {
+    FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // body: PageOptions[pageIndex],
+        body: PageOptions[pageIndex],
         bottomNavigationBar: BottomNavigationBar(
-      // onTap: (index) {
-      //   setState(() {
-      //     pageIndex = index;
-      //   });
-      // },
-      // currentIndex: pageIndex,
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home)),
-        BottomNavigationBarItem(icon: Icon(Icons.search)),
-        BottomNavigationBarItem(icon: Icon(Icons.person)),
-      ],
-    ));
+          onTap: (index) {
+            setState(() {
+              pageIndex = index;
+            });
+          },
+          currentIndex: pageIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              title: Text('Search'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Profile'),
+            ),
+          ],
+        ));
   }
 }

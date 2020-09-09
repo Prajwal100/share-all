@@ -15,24 +15,22 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
   bool isSigned = false;
 
-  // @override
-  // void initState() {
+  @override
+  void initState() {
+    super.initState();
 
-  //   super.initState();
-  //   Firebase.initializeApp();
-
-  //   FirebaseAuth.instance.authStateChanges().listen((useraccount) {
-  //     if (useraccount != null) {
-  //       setState(() {
-  //         isSigned = true;
-  //       });
-  //     } else {
-  //       setState(() {
-  //         isSigned = false;
-  //       });
-  //     }
-  //   });
-  // }
+    FirebaseAuth.instance.authStateChanges().listen((useraccount) {
+      if (useraccount != null) {
+        setState(() {
+          isSigned = true;
+        });
+      } else {
+        setState(() {
+          isSigned = false;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
