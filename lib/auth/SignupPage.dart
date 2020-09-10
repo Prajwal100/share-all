@@ -17,7 +17,6 @@ class _SignupPageState extends State<SignupPage> {
   var passwordcontroller = TextEditingController();
 
   signUp() {
-    Firebase.initializeApp();
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(
             email: emailcontroller.text, password: passwordcontroller.text)
