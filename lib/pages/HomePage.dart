@@ -30,10 +30,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  signout() {
-    FirebaseAuth.instance.signOut();
-  }
-
   sharePost(String documentId, String post) async {
     Share.text("ShareAll", post, 'text/plan');
     DocumentSnapshot document = await postcollection.doc(documentId).get();
@@ -64,12 +60,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('ShareAll'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () => signout(),
-            icon: Icon(Icons.signal_cellular_off),
-          ),
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -85,7 +75,9 @@ class _HomePageState extends State<HomePage> {
         stream: postcollection.snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return CircularProgressIndicator();
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           }
           return ListView.builder(
             itemCount: snapshot.data.documents.length,

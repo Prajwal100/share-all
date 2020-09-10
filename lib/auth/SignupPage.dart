@@ -25,6 +25,8 @@ class _SignupPageState extends State<SignupPage> {
         'username': usernamecontroller.text,
         'email': emailcontroller.text,
         'password': passwordcontroller.text,
+        'cover_pic':
+            'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
         'profile_pic':
             'https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png',
         'uid': signedUser.user.uid

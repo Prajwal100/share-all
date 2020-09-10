@@ -18,9 +18,6 @@ class _MainPageState extends State<MainPage> {
     SearchPage(),
     ProfilePage(),
   ];
-  signout() {
-    FirebaseAuth.instance.signOut();
-  }
 
   @override
   Widget build(BuildContext context) {
