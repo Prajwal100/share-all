@@ -19,3 +19,6 @@ CollectionReference postcollection =
 
 StorageReference postPictures =
     FirebaseStorage.instance.ref().child('post_pictures');
+
+StorageReference profilePicture =
+    FirebaseStorage.instance.ref().child('profile_picture');

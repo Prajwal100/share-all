@@ -72,7 +72,8 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add),
       ),
       body: StreamBuilder(
-        stream: postcollection.snapshots(),
+        stream:
+            postcollection.orderBy('posted_date', descending: true).snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(
