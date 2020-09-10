@@ -80,7 +80,8 @@ class _PostState extends State<Post> {
         'comments': 0,
         'shares': 0,
         'type': 1,
-        'post': postController.text
+        'post': postController.text,
+        'posted_date': DateTime.now()
       });
       Navigator.pop(context);
     }
@@ -97,6 +98,7 @@ class _PostState extends State<Post> {
         'shares': 0,
         'type': 2,
         'image': imageUrl,
+        'posted_date': DateTime.now()
       });
       Navigator.pop(context);
     }
@@ -113,7 +115,8 @@ class _PostState extends State<Post> {
         'shares': 0,
         'type': 3,
         'image': imageUrl,
-        'post': postController.text
+        'post': postController.text,
+        'posted_date': DateTime.now()
       });
       Navigator.pop(context);
     }

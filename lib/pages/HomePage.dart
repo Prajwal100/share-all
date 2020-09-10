@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shareall/pages/PostPage.dart';
+import 'package:shareall/pages/comments.dart';
 import 'package:shareall/utils/variables.dart';
+import 'package:timeago/timeago.dart' as tAgo;
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -13,8 +16,46 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String uid;
+
+  initState() {
+    super.initState();
+    getCurrentUserId();
+  }
+
+  getCurrentUserId() async {
+    var firebaseUser = await FirebaseAuth.instance.currentUser;
+    setState(() {
+      uid = firebaseUser.uid;
+    });
+  }
+
   signout() {
     FirebaseAuth.instance.signOut();
+  }
+
+  sharePost(String documentId, String post) async {
+    Share.text("ShareAll", post, 'text/plan');
+    DocumentSnapshot document = await postcollection.doc(documentId).get();
+
+    postcollection.doc(documentId).update(
+      {'shares': document.data()['shares'] + 1},
+    );
+  }
+
+  likePost(String documentId) async {
+    var firebaseuser = await FirebaseAuth.instance.currentUser;
+    DocumentSnapshot document = await postcollection.doc(documentId).get();
+
+    if (document.data()['likes'].contains(firebaseuser.uid)) {
+      postcollection.doc(documentId).update({
+        'likes': FieldValue.arrayRemove([firebaseuser.uid])
+      });
+    } else {
+      postcollection.doc(documentId).update({
+        'likes': FieldValue.arrayUnion([firebaseuser.uid])
+      });
+    }
   }
 
   @override
@@ -64,6 +105,8 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(tAgo
+                            .format(postData.data()['posted_date'].toDate())),
                         if (postData.data()['type'] == 1)
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -88,9 +131,16 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Row(
                               children: [
-                                FaIcon(
-                                  FontAwesomeIcons.thumbsUp,
-                                  size: 14,
+                                InkWell(
+                                  onTap: () => likePost(postData.data()['id']),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.thumbsUp,
+                                    color:
+                                        postData.data()['likes'].contains(uid)
+                                            ? Colors.blue
+                                            : Colors.black,
+                                    size: 14,
+                                  ),
                                 ),
                                 SizedBox(
                                   width: 4,
@@ -101,9 +151,19 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Row(
                               children: [
-                                FaIcon(
-                                  FontAwesomeIcons.comments,
-                                  size: 14,
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => commentPost(
+                                              postData.data()['id'])),
+                                    );
+                                  },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.comments,
+                                    size: 14,
+                                  ),
                                 ),
                                 SizedBox(
                                   width: 4,
@@ -113,9 +173,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Row(
                               children: [
-                                FaIcon(
-                                  FontAwesomeIcons.shareAlt,
-                                  size: 14,
+                                InkWell(
+                                  onTap: () => sharePost(postData.data()['id'],
+                                      postData.data()['post']),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.shareAlt,
+                                    size: 14,
+                                  ),
                                 ),
                                 SizedBox(
                                   width: 4,
